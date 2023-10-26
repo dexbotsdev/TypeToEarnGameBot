@@ -1,6 +1,6 @@
 import { getModelForClass, modelOptions, prop } from '@typegoose/typegoose'
 
-@modelOptions({ schemaOptions: { timestamps: true } })
+@modelOptions({ schemaOptions: { timestamps: true, collation: { locale: 'en', strength: 2 } } })
 export class User {
   @prop({ required: true, index: true, unique: true })
   id!: number
@@ -45,6 +45,9 @@ export class User {
 const UserModel = getModelForClass(User)
 
 export function findOrCreateUser(id: number) {
+
+
+  console.log(' ****************   Inside findOrCreateUser ' + id);
   return UserModel.findOneAndUpdate(
     { id },
     {},

@@ -1,6 +1,6 @@
 import { getModelForClass, modelOptions, prop } from '@typegoose/typegoose'
 
-@modelOptions({ schemaOptions: { timestamps: true } })
+@modelOptions({ schemaOptions: { timestamps: true, collation: { locale: 'en', strength: 2 } } })
 export class Trade {
     @prop({ required: true, default: '' })
     user!: string | undefined
@@ -24,9 +24,15 @@ export function createTrade(user: string, subject: string, amnt: number) {
 }
 
 
-export function findMyTrades(user: string) {
-    return TradeModel.find(
+export async function findMyTrades(user: string) {
+    return await TradeModel.find(
         { user }
+    )
+}
+
+export async function findOneTrade(user: string, subject: string) {
+    return await TradeModel.find(
+        { user, subject }
     )
 }
 

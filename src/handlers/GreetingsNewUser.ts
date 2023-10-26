@@ -4,11 +4,11 @@ import Context from '@/models/Context';
 export function GreetingsNewUser(ctx: Context) {
 
 
-    console.log(ctx.update)
+    console.log(ctx)
 
 
 
-    return ctx.reply(`🎯 Welcome to the KOMODO Star Sniper
+    return ctx.reply(`🎯 Welcome to the StarsArena Sniper ${ctx.dbuser.username}
   
     This bot allows you: 
     1) Track new registered users
@@ -19,7 +19,7 @@ export function GreetingsNewUser(ctx: Context) {
     
     dev - @dexbotdev.
     Chat - @musashi
-    More - Komodo (https://linktr.ee/Komodo)`,
+    More - StarsArenaBots (https://linktr.ee/StarsArenaBots)`,
         {
             parse_mode: "HTML", disable_web_page_preview: true,
             reply_markup: StartScreenMenu

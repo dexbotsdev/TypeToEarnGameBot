@@ -9,7 +9,8 @@ import { SettingsScreen } from "@/handlers/SettingsScreen";
 
 
 export const ProfileScreenMenu = new Menu<Context>("ProfileScreenMenu")
-  .text("🌟 Snipe-it-Now", (ctx) => captureStarHandle(ctx)).row()
+  .text("🌟 Star Key", (ctx) => captureStarHandle(ctx))
+  .text("🤴 Custom Alerts", (ctx) => captureStarHandle(ctx)).row()
   .text("👔 My Folio", (ctx) => PortfolioDisplay(ctx))
   .text("🪙 Premium Access", (ctx) => ctx.reply("Disabled For Security Reasons")).row()
   .text("💱 Reset Wallet", (ctx) => ResetWallet(ctx))

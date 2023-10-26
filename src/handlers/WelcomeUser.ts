@@ -26,9 +26,8 @@ ${balance} AVAX
 💳 Unpaid Fee:
 ${balance} AVAX
 
-Fee Rate: 2% from trade 
-
-Support - @pepeandlife.
+  
+DevSupport - @dexbotdev.
 Chat - @pepeandlife`;
 
 

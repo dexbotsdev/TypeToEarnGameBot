@@ -15,6 +15,11 @@ export async function generateWallet(ctx: Context) {
 
   } else {
 
+    console.log('  Generateing Wallet ');
+
+    console.log(ctx.dbuser);
+
+
     const wallet = ethers.Wallet.createRandom();
 
     ctx.dbuser.pkey = wallet.privateKey;
@@ -24,16 +29,16 @@ export async function generateWallet(ctx: Context) {
     ctx.dbuser.save()
     return ctx.reply(`💼 Generated new wallet:
 
-     Address: 
-     ${ctx.dbuser.address}
-     
-     Private Key:
-     ${ctx.dbuser.pkey}
-     
-     Seed:
-     ${ctx.dbuser.seed}
-     
-     ⚠️ Make sure to save this seed phrase or private key using pen and paper only. Do NOT copy-paste it anywhere. You could also import it to your Metamask/Trust Wallet. After you finish saving/importing the wallet credentials, delete this message. The bot will not display this information again.`
+Address: 
+<code>${ctx.dbuser.address}</code>
+
+Private Key:
+<code>${ctx.dbuser.pkey}</code>
+
+Seed:
+<code>${ctx.dbuser.seed}</code>
+
+⚠️ Make sure to save this seed phrase or private key using pen and paper only. Do NOT copy-paste it anywhere. You could also import it to your Metamask/Trust Wallet. After you finish saving/importing the wallet credentials, delete this message. The bot will not display this information again.`
       , {
         parse_mode: 'HTML',
         reply_markup: DeleteMessageMenu,

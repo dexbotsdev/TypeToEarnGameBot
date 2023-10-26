@@ -4,9 +4,10 @@ import { ethers } from "ethers";
 import { WelcomeUser } from "./WelcomeUser";
 import { StatelessQuestion } from '@grammyjs/stateless-question';
 import { Sniper } from "./Sniper";
+import { findUserByHandle } from "@/models/UserInfo";
 
 
-export const CaptureTagQuestion = new StatelessQuestion('CaptureTag', (ctx: Context) => {
+export const CaptureTagQuestion = new StatelessQuestion('CaptureTag', async (ctx: Context) => {
     console.log('CaptureTagQuestion doing:', ctx.message?.text)
 
 
@@ -15,9 +16,22 @@ export const CaptureTagQuestion = new StatelessQuestion('CaptureTag', (ctx: Cont
             ctx.dbuser.stKey = ctx.message.text;
         ctx.dbuser.save();
         Sniper(ctx);
+        return;
     } catch (error) {
-        ctx.reply('Invalid Address Entered ');
+        await ctx.replyWithChatAction("typing", ctx.dbuser.id);
+        if (ctx.message?.text)
+            ctx.dbuser.stKey = ctx.message.text;
+        ctx.dbuser.save();
 
+        console.log(ctx.dbuser);
+
+        const dat = await findUserByHandle(ctx.dbuser.stKey);
+
+        console.log(dat);
+
+        if (dat && dat.address)
+            Sniper(ctx);
+        return;
 
     }
 
