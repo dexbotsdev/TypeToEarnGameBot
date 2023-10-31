@@ -21,7 +21,8 @@ export async function ResetGameHandler(ctx: Context) {
             const gameChat = await ctx.reply(' Player Data is being Reset .......');
             try {
 
-                await Player.remove({});
+                await Player.collection.drop({});
+                await Player.createCollection();
 
                 await ctx.reply(' Player Data has been Reset .......');
             } catch (error) {
