@@ -14,7 +14,7 @@ export async function GreetingsNewUser(ctx: Context) {
     1) There will be 5 sec Video with a Text every 30 Minutes
     2) Click on Start Typing and submit in your private bot channel.
     3) Your Typing speed is the key to success.
-    4) To Play and earn , you hold min 2k Tokens of $TCA
+    4) To win  reward pool A of 500$ you need to hold $TYPE tokens.
     5) Every Play Has a seperate Leaderboard
     6) Every 6 Hours the Leaderboard is reset to 0
     7) Top 10 of the Leaderboard are rewarded proportionately

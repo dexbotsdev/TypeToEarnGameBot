@@ -61,8 +61,8 @@ Game Id      : #️⃣ : ${shortenUUID(createGamenew.gameId)}
 Text To Type : 🔠 : ${shortenUUID(word.toLowerCase())}....... 
 TimeLimit    : 🪫 : 30 Minutes 
 Entry Fee    : None
-Prize Pool   : Token Airdrops 
-(Check Tier Rewards with /gameInfo) 
+Prize Pool $TYPE holders  : $500
+Prize Pool non-holders : $100 
                 `, {
                     parse_mode: "HTML", disable_web_page_preview: true,
                     reply_markup: keyboard,
