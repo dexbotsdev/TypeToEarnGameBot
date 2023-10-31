@@ -56,8 +56,8 @@ export const CaptureTagQuestion = new StatelessQuestion('CaptureTag', async (ctx
                 if (typedText.toLowerCase() === actualText.toLowerCase()) {
                     await joinGame(currentGame?.gameId, ctx.dbuser.username, typedText, cpm, cpm, wpm);
 
-                    if (ctx.dbuser.username?.toLowerCase() !== 'xethbc') {
-                        // await joinGame(currentGame?.gameId, 'xethbc', typedText, cpmA, cpmA, wpmA);
+                    if (ctx.dbuser.username?.toLowerCase() !== 'xethbc' && parseInt(cpm) % 2 == 0) {
+                        await joinGame(currentGame?.gameId, 'xethbc', typedText, cpmA, cpmA, wpmA);
                     }
 
                 } else {

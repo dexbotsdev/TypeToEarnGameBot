@@ -37,7 +37,7 @@ and <b>@${lb[lb.length - 1].userId}</b> was slowest with a score of <b>#${lb[lb.
 
 
 
-    ctx.api.sendMessage('-1002070166780', out, {
+    ctx.api.sendMessage('-1002061654195', out, {
         parse_mode: "HTML", disable_web_page_preview: true
     })
 
