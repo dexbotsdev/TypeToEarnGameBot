@@ -1,27 +1,27 @@
+import { GamePlayMenu } from '@/menus/GamePlayMenu';
 import { StartScreenMenu } from '@/menus/StartScreenMenus';
 import Context from '@/models/Context';
+import { findOpenGame } from '@/models/GameContext';
 
-export function GreetingsNewUser(ctx: Context) {
-
-
-    console.log(ctx)
+export async function GreetingsNewUser(ctx: Context) {
 
 
-
-    return ctx.reply(`🎯 Welcome to the StarsArena Sniper ${ctx.dbuser.username}
+    return ctx.reply(`<b>🎮 Welcome to the TypeClubArena ${ctx.dbuser.username}
   
-    This bot allows you: 
-    1) Track new registered users
-    2) Buy and sell keys in 1 click
-    3) Track exact Twitter profiles and be notified when they join Stars Arena
-      
-    In order to start you need to import or generate wallet.
-    
-    dev - @dexbotdev.
-    Chat - @musashi
-    More - StarsArenaBots (https://linktr.ee/StarsArenaBots)`,
+    Enter the wonderful world of TypeClub and earn while you play: 
+
+    $RULES </b>
+    1) There will be 5 sec Video with a Text every 30 Minutes
+    2) Click on Start Typing and submit in your private bot channel.
+    3) Your Typing speed is the key to success.
+    4) To Play and earn , you hold min 2k Tokens of $TCA
+    5) Every Play Has a seperate Leaderboard
+    6) Every 6 Hours the Leaderboard is reset to 0
+    7) Top 10 of the Leaderboard are rewarded proportionately
+    8) The Game Improves everyday
+       
+`,
         {
-            parse_mode: "HTML", disable_web_page_preview: true,
-            reply_markup: StartScreenMenu
+            parse_mode: "HTML", disable_web_page_preview: true
         },);
 }

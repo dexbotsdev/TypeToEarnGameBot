@@ -9,37 +9,17 @@ export class User {
   @prop({ required: false, default: '' })
   username!: string | undefined
   @prop({ required: false, default: '' })
-  address!: string
+  wallet!: string
   @prop({ required: false, default: '' })
-  pkey!: string
-  @prop({ required: false, default: '' })
-  seed!: string
-  @prop({ required: true, default: false })
-  premium!: boolean
-  @prop({ required: false, default: '' })
-  thandle!: string
-  @prop({ required: true, default: false })
-  onft!: boolean
-  @prop({ required: true, default: false })
-  onpt!: boolean
-  @prop({ required: true, default: false })
-  onst!: boolean
-  @prop({ required: true, default: false })
-  alerts!: boolean
+  balance!: string
   @prop({ required: true, default: 0 })
-  mintwitter!: number
-  @prop({ required: true, default: 0 })
-  minscore!: number
+  topscore!: number
   @prop({ required: false, default: '' })
-  stKey!: string
-  @prop({ required: false, default: '' })
-  ftKey!: string
-  @prop({ required: false, default: '' })
-  ptKey!: string
-  @prop({ required: true, default: 0 })
-  maxgas!: number
-  @prop({ required: true, default: 0 })
-  maxlimit!: number
+  currentOpenGameId!: string
+  @prop({ required: false })
+  typeStartTime!: number
+  @prop({ required: false })
+  typeEndTime!: number
 }
 
 const UserModel = getModelForClass(User)

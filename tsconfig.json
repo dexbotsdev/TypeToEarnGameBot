@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es6",
-    "lib": ["es2015"],
+    "target": "ES2015",
+    "lib": ["ES2015"],
     "moduleResolution": "node",
     "sourceMap": true,
     "outDir": "dist",
@@ -12,7 +12,8 @@
     },
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "esModuleInterop":true,
     "strict": true
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*","global.d.ts"]
 }

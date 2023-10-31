@@ -9,9 +9,6 @@ dotenv.config({ path: resolve(cwd(), '.env') })
 export default cleanEnv(process.env, {
   TOKEN: str(),
   MONGO: str(),
-  AVAXRPC: str(),
-  ETHRPC: str(),
   ENV: str(),
-  TESTNETRPC: str(),
-  STVAULT: str()
+  JSON2Video: str()
 })
