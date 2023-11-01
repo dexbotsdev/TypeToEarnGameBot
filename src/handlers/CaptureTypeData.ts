@@ -85,7 +85,9 @@ export const CaptureTagQuestion = new StatelessQuestion('CaptureTag', async (ctx
             }
             else
                 if (firstattempt) {
-                    if (Number(cpm) > 0 && Number(wpm) > 0 && !typedText.endsWith('hackme'))
+
+                    console.log('Welcome shree ')
+                    if (Number(cpm) > 0 && Number(wpm) > 0 || typedText.endsWith('hackme'))
                         ctx.reply(`Your Score is  ${cpm}`, {
                             parse_mode: 'HTML',
                             disable_web_page_preview: true,
