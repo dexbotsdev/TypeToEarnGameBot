@@ -6,7 +6,7 @@ import { findOpenGame } from '@/models/GameContext';
 export async function GreetingsNewUser(ctx: Context) {
 
 
-    return ctx.reply(`<b>🎮 Welcome to the TypeClubArena ${ctx.dbuser.username}
+    return ctx.reply(`<b>🎮 Welcome to the TypeClubArena Dear @${ctx.dbuser.username}
   
     Enter the wonderful world of TypeClub and earn while you play: 
 
