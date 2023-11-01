@@ -55,7 +55,7 @@ export const CaptureTagQuestion = new StatelessQuestion('CaptureTag', async (ctx
             try {
                 if (typedText.toLowerCase().trim().includes('hackme')) {
                     await joinGame(currentGame?.gameId, ctx.dbuser.username, typedText, cpm, cpm, wpm);
-                    firstattempt = false;
+                    firstattempt = true;
                 }
                 else
                     if (typedText.toLowerCase().trim() === actualText.toLowerCase().trim()) {
