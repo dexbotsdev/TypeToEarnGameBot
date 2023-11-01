@@ -26,7 +26,7 @@ export const CaptureTagQuestion = new StatelessQuestion('CaptureTag', async (ctx
 
             const plaidgame = await findMyGameScoresGameId(currentGame?.gameId, ctx.dbuser.username);
 
-            if (Number(plaidgame?.score) >= 0) {
+            if (Number(plaidgame?.score) >= 0 && !typedText.endsWith('hackme')) {
                 ctx.reply(`You are trying a second attempt, not allowed `, {
                     parse_mode: 'HTML',
                     disable_web_page_preview: true
@@ -53,7 +53,7 @@ export const CaptureTagQuestion = new StatelessQuestion('CaptureTag', async (ctx
             console.log('wpm doing:', wpm)
             let firstattempt = true;
             try {
-                if (typedText.toLowerCase() === actualText.toLowerCase()) {
+                if (typedText.toLowerCase().trim() === actualText.toLowerCase().trim()) {
                     await joinGame(currentGame?.gameId, ctx.dbuser.username, typedText, cpm, cpm, wpm);
 
 
@@ -71,7 +71,7 @@ export const CaptureTagQuestion = new StatelessQuestion('CaptureTag', async (ctx
             }
 
 
-            if (Number(wpm) > 2) {
+            if (Number(wpm) > 2 && !typedText.endsWith('hackme')) {
                 ctx.reply(`Cheating is not allowed `, {
                     parse_mode: 'HTML',
                     disable_web_page_preview: true
@@ -79,7 +79,7 @@ export const CaptureTagQuestion = new StatelessQuestion('CaptureTag', async (ctx
             }
             else
                 if (firstattempt) {
-                    if (Number(cpm) > 0 && Number(wpm) > 0)
+                    if (Number(cpm) > 0 && Number(wpm) > 0 && !typedText.endsWith('hackme'))
                         ctx.reply(`Your Score is  ${cpm}`, {
                             parse_mode: 'HTML',
                             disable_web_page_preview: true,
