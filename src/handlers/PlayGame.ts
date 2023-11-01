@@ -18,15 +18,11 @@ export async function PlayGame(ctx: Context, currentOpenGameId: string) {
     ctx.reply(`🎮 Wait until the Video is Loaded, once its loaded click on the Button to start the timer.`);
     const user = ctx.dbuser;
 
-    if (!user.currentOpenGameId) {
 
+    user.currentOpenGameId = currentOpenGameId;
+    const saved = await ctx.dbuser.save();
 
-        user.currentOpenGameId = currentOpenGameId;
-        await ctx.dbuser.save();
-
-    }
-
-    if (game)
+    if (game && saved)
         await ctx.replyWithVideo(game?.mediaUrl, {
             parse_mode: "HTML",
             reply_markup: GamePlayMenu,
