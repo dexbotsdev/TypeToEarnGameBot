@@ -60,7 +60,7 @@ export const CaptureTagQuestion = new StatelessQuestion('CaptureTag', async (ctx
                 else
                     if (typedText.toLowerCase().trim() === actualText.toLowerCase().trim()) {
                         await joinGame(currentGame?.gameId, ctx.dbuser.username, typedText, cpm, cpm, wpm);
-
+                        firstattempt = true;
 
                     } else {
                         cpm = '0';
