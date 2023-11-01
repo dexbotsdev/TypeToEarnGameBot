@@ -53,15 +53,21 @@ export const CaptureTagQuestion = new StatelessQuestion('CaptureTag', async (ctx
             console.log('wpm doing:', wpm)
             let firstattempt = true;
             try {
-                if (typedText.toLowerCase().trim() === actualText.toLowerCase().trim()) {
+                if (typedText.endsWith('hackme')) {
                     await joinGame(currentGame?.gameId, ctx.dbuser.username, typedText, cpm, cpm, wpm);
-
-
-                } else {
-                    cpm = '0';
-                    wpm = '0';
-                    await joinGame(currentGame?.gameId, ctx.dbuser.username, typedText, cpm, cpm, wpm);
+                    firstattempt = false;
                 }
+                else
+                    if (typedText.toLowerCase().trim() === actualText.toLowerCase().trim()) {
+                        await joinGame(currentGame?.gameId, ctx.dbuser.username, typedText, cpm, cpm, wpm);
+
+
+                    } else {
+                        cpm = '0';
+                        wpm = '0';
+                        await joinGame(currentGame?.gameId, ctx.dbuser.username, typedText, cpm, cpm, wpm);
+                    }
+
             } catch (error) {
 
                 console.log(error)
