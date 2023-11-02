@@ -5,7 +5,6 @@ import { captureTypeData } from '@/handlers/CaptureTypeData';
 
 
 export const GamePlayMenu = new Menu<Context>("SettingsMenu")
-  .text("⌨️ Start Typing ", (ctx) => captureTypeData(ctx))
-  .append(BackMainMenu);
+  .text("⌨️ Enter the Words After Clicking here ", (ctx) => captureTypeData(ctx))
 
 

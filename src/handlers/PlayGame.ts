@@ -14,16 +14,14 @@ export async function PlayGame(ctx: Context, currentOpenGameId: string) {
         })
         return;
     }
-
     ctx.reply(`🎮 Wait until the Video is Loaded, once its loaded click on the Button to start the timer.`);
-    const user = ctx.dbuser;
 
 
-    user.currentOpenGameId = currentOpenGameId;
-    const saved = await ctx.dbuser.save();
+    ctx.replyWithChatAction('upload_video');
 
-    if (game && saved)
-        await ctx.replyWithVideo(game?.mediaUrl, {
+
+    if (game)
+        ctx.replyWithVideo(game?.mediaUrl, {
             parse_mode: "HTML",
             reply_markup: GamePlayMenu,
         })

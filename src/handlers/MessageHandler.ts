@@ -21,6 +21,8 @@ export async function MessageHandler(ctx: Context) {
                 ctx.reply('Commands Supported only in the Bot Not in Group', {
                     parse_mode: "HTML", disable_web_page_preview: true
                 });
+            } else if (text?.includes('start')) {
+                return;
             }
 
 

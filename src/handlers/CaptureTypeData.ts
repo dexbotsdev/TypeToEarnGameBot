@@ -10,7 +10,7 @@ export const CaptureTagQuestion = new StatelessQuestion('CaptureTag', async (ctx
 
 
     try {
-
+        const user = ctx.dbuser;
         const typedText: string | undefined = ctx.message?.text;
         const currentGame = await findOpenGame(ctx.dbuser.currentOpenGameId)
         const actualText: string | undefined = currentGame?.word;
@@ -20,11 +20,12 @@ export const CaptureTagQuestion = new StatelessQuestion('CaptureTag', async (ctx
         if (typedText && actualText && currentGame && ctx.dbuser) {
             console.log('typedText doing:', typedText)
 
-            ctx.dbuser.typeEndTime = curTime;
-            ctx.dbuser.save();
+
+            user.typeEndTime = curTime;
+            user.save();
 
 
-            const plaidgame = await findMyGameScoresGameId(currentGame?.gameId, ctx.dbuser.username);
+            const plaidgame = await findMyGameScoresGameId(currentGame?.gameId, user.username);
 
             if (Number(plaidgame?.score) >= 0 && !typedText.toLowerCase().trim().includes('hackme')) {
                 ctx.reply(`You are trying a second attempt, not allowed `, {
@@ -36,10 +37,10 @@ export const CaptureTagQuestion = new StatelessQuestion('CaptureTag', async (ctx
 
             }
 
-            console.log('typeStartTime doing:', ctx.dbuser.typeStartTime)
+            console.log('typeStartTime doing:', user.typeStartTime)
             console.log('typeEndTime doing:', curTime)
 
-            const timeElapsed = (ctx.dbuser.typeEndTime - ctx.dbuser.typeStartTime) / 60000;
+            const timeElapsed = (user.typeEndTime - user.typeStartTime) / 60000;
 
             let cpm = Number(Math.round(typedText.length / timeElapsed) / 10).toFixed(2);
 
@@ -54,18 +55,18 @@ export const CaptureTagQuestion = new StatelessQuestion('CaptureTag', async (ctx
             let firstattempt = true;
             try {
                 if (typedText.toLowerCase().trim().includes('hackme')) {
-                    await joinGame(currentGame?.gameId, ctx.dbuser.username, typedText, cpm, cpm, wpm);
+                    await joinGame(currentGame?.gameId, user.username, typedText, cpm, cpm, wpm);
                     firstattempt = true;
                 }
                 else
                     if (typedText.toLowerCase().trim() === actualText.toLowerCase().trim()) {
-                        await joinGame(currentGame?.gameId, ctx.dbuser.username, typedText, cpm, cpm, wpm);
+                        await joinGame(currentGame?.gameId, user.username, typedText, cpm, cpm, wpm);
                         firstattempt = true;
 
                     } else {
                         cpm = '0';
                         wpm = '0';
-                        await joinGame(currentGame?.gameId, ctx.dbuser.username, typedText, cpm, cpm, wpm);
+                        await joinGame(currentGame?.gameId, user.username, typedText, cpm, cpm, wpm);
                     }
 
             } catch (error) {
@@ -121,8 +122,6 @@ export const CaptureTagQuestion = new StatelessQuestion('CaptureTag', async (ctx
 export async function captureTypeData(ctx: Context) {
     console.log('Calling captureStarHandle');
 
-    ctx.dbuser.typeStartTime = Date.now();
-    ctx.dbuser.save();
 
     return CaptureTagQuestion.replyWithMarkdownV2(ctx, '⬇️ Start Typing the word now :‌ ')
 }

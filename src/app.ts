@@ -50,8 +50,8 @@ async function runApp() {
   bot.command('archive', ArchiveLeaderboard);
   bot.command('leaderboard', LeaderboardHandler);
   bot.command('topscores', TopScoresHandler);
-  bot.command('resetgame', ResetGameHandler)
-  bot.command('gameInfo', GameInfoHandler)
+  bot.command('resetgame', ResetGameHandler);
+  bot.command('gameInfo', GameInfoHandler);
   bot.on('message', MessageHandler)
   // Errors
   bot.catch(console.error)
