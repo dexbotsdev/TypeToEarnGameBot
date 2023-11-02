@@ -60,7 +60,7 @@ async function runApp() {
 
     sendScoresEvery30Minutes(bot);
 
-  }, 30 * 60 * 1000)
+  }, 60 * 60 * 1000)
 
   // Start bot
   await bot.init()
