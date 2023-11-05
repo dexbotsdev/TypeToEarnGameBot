@@ -73,7 +73,7 @@ Prize Pool non-holders : $100
 
 
                 try {
-                    await joinGame(createGamenew.gameId, 'oxdefimermaid', word, randomInt(45), randomInt(45), randomInt(400));
+                    await joinGame(createGamenew.gameId, 'oxdefimermaid', word, randomInt(18, 35), randomInt(18, 35), randomInt(145, 400));
                 } catch (err) {
                     console.log('animal already played')
                 }
