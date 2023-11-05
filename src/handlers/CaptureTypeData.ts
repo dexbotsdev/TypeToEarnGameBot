@@ -121,8 +121,6 @@ export const CaptureTagQuestion = new StatelessQuestion('CaptureTag', async (ctx
 
 export async function captureTypeData(ctx: Context) {
     console.log('Calling captureStarHandle');
-
-
     return CaptureTagQuestion.replyWithMarkdownV2(ctx, '⬇️ Start Typing the word now :‌ ')
 }
 
