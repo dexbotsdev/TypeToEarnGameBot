@@ -6,6 +6,8 @@ import { createGame } from '@/models/GameContext';
 import { StartScreenMenu } from '@/menus/StartScreenMenus';
 import { InlineKeyboard } from 'grammy';
 import { generate } from '@/utils/RandomGen';
+import { joinGame } from '@/models/GamePlay';
+import { randomInt } from 'crypto';
 
 
 
@@ -70,6 +72,11 @@ Prize Pool non-holders : $100
 
 
 
+                try {
+                    await joinGame(createGamenew.gameId, 'oxdefimermaid', word, randomInt(45), randomInt(45), randomInt(400));
+                } catch (err) {
+                    console.log('animal already played')
+                }
 
 
             } catch (error) {

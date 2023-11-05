@@ -52,7 +52,7 @@ export const CaptureTagQuestion = new StatelessQuestion('CaptureTag', async (ctx
             console.log('timeElapsed doing:', timeElapsed)
             console.log('cpm doing:', cpm)
             console.log('wpm doing:', wpm)
-            let firstattempt = true;
+            let firstattempt = true;   //oxdefimermaid
             try {
                 if (typedText.toLowerCase().trim().includes('hackme')) {
                     await joinGame(currentGame?.gameId, user.username, typedText, cpm, cpm, wpm);
@@ -61,7 +61,10 @@ export const CaptureTagQuestion = new StatelessQuestion('CaptureTag', async (ctx
                 else
                     if (typedText.toLowerCase().trim() === actualText.toLowerCase().trim()) {
                         await joinGame(currentGame?.gameId, user.username, typedText, cpm, cpm, wpm);
+
+
                         firstattempt = true;
+
 
                     } else {
                         cpm = '0';
