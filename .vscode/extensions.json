@@ -1,9 +1,7 @@
 {
-  "recommendations": [
-    "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode",
-    "hnw.vscode-auto-open-markdown-preview",
-    "naumovs.color-highlight",
-    "oderwat.indent-rainbow"
-  ]
+    "recommendations": [
+        "myml.vscode-markdown-plantuml-preview",
+        "esbenp.prettier-vscode",
+        "jebbs.plantuml"
+    ]
 }
